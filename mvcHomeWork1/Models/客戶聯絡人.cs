@@ -12,6 +12,7 @@ namespace mvcHomeWork1.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     
     public partial class 客戶聯絡人
     {
@@ -22,6 +23,7 @@ namespace mvcHomeWork1.Models
         public string 姓名 { get; set; }
         [Required]
         [EmailAddress]
+        [Unique(ErrorMessage = "同一個客戶下的聯絡人，其 Email 不能重複。")]
         public string Email { get; set; }
         [Required]
         public string 手機 { get; set; }
@@ -30,4 +32,27 @@ namespace mvcHomeWork1.Models
     
         public virtual 客戶資料 客戶資料 { get; set; }
     }
+
+    public class UniqueAttribute : ValidationAttribute
+    {
+        private 客戶資料Entities db = new 客戶資料Entities();
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value != null)
+            {
+                var valueAsString = value.ToString();
+                var data = db.客戶聯絡人.Where(d => d.Email.Equals(valueAsString));
+                if (data.ToList().Count > 0)
+                {
+                    var errorMessage = FormatErrorMessage(validationContext.DisplayName);
+                    return new ValidationResult(errorMessage);
+                }
+                
+            }
+            return ValidationResult.Success;
+        }
+    }
+
+
 }
