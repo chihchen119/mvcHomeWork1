@@ -26,6 +26,7 @@ namespace mvcHomeWork1.Models
         [Unique(ErrorMessage = "同一個客戶下的聯絡人，其 Email 不能重複。")]
         public string Email { get; set; }
         [Required]
+        [RegularExpression("\\d{4}-\\d{6}", ErrorMessage = "手機號碼格式錯誤( e.g. 0987-654321 )")]
         public string 手機 { get; set; }
         public string 電話 { get; set; }
         public Nullable<bool> 是否已刪除 { get; set; }
