@@ -26,6 +26,7 @@ namespace mvcHomeWork1.Models
         public string 帳戶名稱 { get; set; }
         [Required]
         public string 帳戶號碼 { get; set; }
+        public Nullable<bool> 是否已刪除 { get; set; }
     
         public virtual 客戶資料 客戶資料 { get; set; }
     }

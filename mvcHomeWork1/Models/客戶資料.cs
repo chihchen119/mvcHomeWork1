@@ -20,7 +20,7 @@ namespace mvcHomeWork1.Models
             this.客戶銀行資訊 = new HashSet<客戶銀行資訊>();
             this.客戶聯絡人 = new HashSet<客戶聯絡人>();
         }
-    
+
         public int Id { get; set; }
         [Required]
         public string 客戶名稱 { get; set; }
@@ -31,6 +31,7 @@ namespace mvcHomeWork1.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        public Nullable<bool> 是否已刪除 { get; set; }
     
         public virtual ICollection<客戶銀行資訊> 客戶銀行資訊 { get; set; }
         public virtual ICollection<客戶聯絡人> 客戶聯絡人 { get; set; }
