@@ -20,6 +20,12 @@ namespace mvcHomeWork1.Controllers
             return View(db.客戶資料.ToList());
         }
 
+        // GET: SimpleReport
+        public ActionResult SimpleReport()
+        {
+            return View(db.客戶資料.ToList());
+        }
+
         // GET: Customer/Details/5
         public ActionResult Details(int? id)
         {

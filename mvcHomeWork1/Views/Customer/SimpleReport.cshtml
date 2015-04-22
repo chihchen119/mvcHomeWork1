@@ -1,0 +1,38 @@
+﻿@model IEnumerable<mvcHomeWork1.Models.客戶資料>
+
+@{
+    ViewBag.Title = "SimpleReport";
+}
+
+<h2>SimpleReport</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.客戶名稱)
+        </th>
+        <th>
+            聯絡人數量
+        </th>
+        <th>
+            銀行帳戶數量
+        </th>
+ 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.客戶名稱)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.客戶聯絡人.Count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.客戶銀行資訊.Count)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<mvcHomeWork1.Models.客戶資料>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "客戶資料";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<p>
+    @Html.ActionLink("簡易報表", "SimpleReport")
+</p>
+
 <table class="table">
     <tr>
         <th>
